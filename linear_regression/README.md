@@ -10,3 +10,5 @@
 
 #### Partial derivative with respect to b and m (to perform gradient descent)
 ![gradient descent](https://spin.atomicobject.com/wp-content/uploads/linear_regression_gradient1.png)
+
+data.csv from [Siraj Raval's github](https://github.com/llSourcell/linear_regression_live/blob/master/data.csv)
