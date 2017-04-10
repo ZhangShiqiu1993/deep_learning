@@ -3,10 +3,11 @@
 ---
 #### demo
 
-learning curves
+<br/>
+learning curves<br/>
 ![learning_curve](https://github.com/ZhangShiqiu1993/deep_learning/blob/master/bike_rental_ridership/learning_curve.png?raw=true)
-
-prediction
+<br/>
+prediction<br/>
 ![prediction](https://github.com/ZhangShiqiu1993/deep_learning/blob/master/bike_rental_ridership/prediction.png?raw=true)
 
 ---
@@ -14,7 +15,6 @@ prediction
 + implemented three layers nerual network model; implement forward propagation and backpropagation
 + trained NN model based on dataset from Capital BikeShare System
 + implemented daily bike rental ridership prediction
-
 
 ---
 
