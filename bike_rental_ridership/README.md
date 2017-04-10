@@ -3,11 +3,12 @@
 ---
 #### demo
 
-<br/>
-learning curves<br/>
+learning curves
+
 ![learning_curve](https://github.com/ZhangShiqiu1993/deep_learning/blob/master/bike_rental_ridership/learning_curve.png?raw=true)
-<br/>
-prediction<br/>
+
+prediction
+
 ![prediction](https://github.com/ZhangShiqiu1993/deep_learning/blob/master/bike_rental_ridership/prediction.png?raw=true)
 
 ---
