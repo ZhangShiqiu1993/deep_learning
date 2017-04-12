@@ -14,7 +14,7 @@ for each in dummy_fields:
     dummies = pd.get_dummies(rides[each], prefix=each, drop_first=False)
     rides = pd.concat([rides, dummies], axis=1)
 
-fields_to_drop = ['instant', 'dteday', 'season', 'weathersit', 
+fields_to_drop = ['instant', 'dteday', 'season', 'weathersit',
                   'weekday', 'atemp', 'mnth', 'workingday', 'hr']
 data = rides.drop(fields_to_drop, axis=1)
 data.head()
@@ -47,17 +47,17 @@ class NeuralNetwork(object):
         self.input_nodes = input_nodes
         self.hidden_nodes = hidden_nodes
         self.output_nodes = output_nodes
-        self.weights_input_to_hidden = np.random.normal(0.0, self.input_nodes**-0.5, 
+        self.weights_input_to_hidden = np.random.normal(0.0, self.input_nodes**-0.5,
                                        (self.input_nodes, self.hidden_nodes))
 
-        self.weights_hidden_to_output = np.random.normal(0.0, self.hidden_nodes**-0.5, 
+        self.weights_hidden_to_output = np.random.normal(0.0, self.hidden_nodes**-0.5,
                                         (self.hidden_nodes, self.output_nodes))
         self.lr = learning_rate
         self.activation_function = lambda x : 1 / (1 + np.exp(-x))
-        
-    
+
+
     def train(self, features, targets):
-        ''' Train the network on batch of features and targets. 
+        ''' Train the network on batch of features and targets.
             Arguments
             ---------
             features: 2D array, each row is one data record, each column is a feature
@@ -68,38 +68,38 @@ class NeuralNetwork(object):
         delta_weights_h_o = np.zeros(self.weights_hidden_to_output.shape)
         for X, y in zip(features, targets):
             hidden_inputs = np.dot(X[:,None].T, self.weights_input_to_hidden)
-            
+
             hidden_outputs = self.activation_function(hidden_inputs)
             final_inputs = np.dot(hidden_outputs, self.weights_hidden_to_output)
             final_outputs = final_inputs
 
-            error = y - final_outputs 
+            error = y - final_outputs
             output_error_term = error
-            
+
             delta_weights_h_o += self.lr * np.dot(hidden_outputs.T, output_error_term)
-            
+
             hidden_error = np.dot(self.weights_hidden_to_output, output_error_term.T)
             hidden_error_term = hidden_error.T * self.activation_function(hidden_inputs) *                                (1 - self.activation_function(hidden_inputs))
-            
+
 
             delta_weights_i_h += self.lr * np.dot(X[:,None], hidden_error_term)
 
         self.weights_hidden_to_output += delta_weights_h_o / n_records
         self.weights_input_to_hidden += delta_weights_i_h / n_records
- 
+
     def run(self, features):
-        ''' Run a forward pass through the network with input features 
+        ''' Run a forward pass through the network with input features
             Arguments
             ---------
             features: 1D array of feature values
         '''
-        
-        hidden_inputs = np.dot(features, self.weights_input_to_hidden) 
-        hidden_outputs = self.activation_function(hidden_inputs) 
-        
-        final_inputs = np.dot(hidden_outputs, self.weights_hidden_to_output) 
-        final_outputs = final_inputs 
-        
+
+        hidden_inputs = np.dot(features, self.weights_input_to_hidden)
+        hidden_outputs = self.activation_function(hidden_inputs)
+
+        final_inputs = np.dot(hidden_outputs, self.weights_hidden_to_output)
+        final_outputs = final_inputs
+
         return final_outputs
 
 
@@ -122,10 +122,10 @@ test_w_h_o = np.array([[0.3],
 class TestMethods(unittest.TestCase):
     def test_data_path(self):
         self.assertTrue(data_path.lower() == 'bike-sharing-dataset/hour.csv')
-        
+
     def test_data_loaded(self):
         self.assertTrue(isinstance(rides, pd.DataFrame))
-        
+
     def test_activation(self):
         network = NeuralNetwork(3, 2, 1, 0.5)
         self.assertTrue(np.all(network.activation_function(0.5) == 1/(1+np.exp(-0.5))))
@@ -134,15 +134,15 @@ class TestMethods(unittest.TestCase):
         network = NeuralNetwork(3, 2, 1, 0.5)
         network.weights_input_to_hidden = test_w_i_h.copy()
         network.weights_hidden_to_output = test_w_h_o.copy()
-        
+
         network.train(inputs, targets)
 
-        self.assertTrue(np.allclose(network.weights_hidden_to_output, 
-                                    np.array([[ 0.37275328], 
+        self.assertTrue(np.allclose(network.weights_hidden_to_output,
+                                    np.array([[ 0.37275328],
                                               [-0.03172939]])))
         self.assertTrue(np.allclose(network.weights_input_to_hidden,
-                                    np.array([[ 0.10562014, -0.20185996], 
-                                              [0.39775194, 0.50074398], 
+                                    np.array([[ 0.10562014, -0.20185996],
+                                              [0.39775194, 0.50074398],
                                               [-0.29887597, 0.19962801]])))
 
     def test_run(self):
@@ -160,9 +160,9 @@ unittest.TextTestRunner().run(suite)
 
 import sys
 
-iterations = 3000
-learning_rate = 0.6
-hidden_nodes = 6
+iterations = 30000
+learning_rate = 0.1
+hidden_nodes = 50
 
 
 output_nodes = 1
@@ -174,14 +174,14 @@ losses = {'train':[], 'validation':[]}
 for ii in range(iterations):
     batch = np.random.choice(train_features.index, size=128)
     X, y = train_features.ix[batch].values, train_targets.ix[batch]['cnt']
-                             
+
     network.train(X, y)
-    
+
     train_loss = MSE(network.run(train_features).T, train_targets['cnt'].values)
     val_loss = MSE(network.run(val_features).T, val_targets['cnt'].values)
     sys.stdout.write("\rProgress: {:2.1f}".format(100 * ii/float(iterations))                      + "% ... Training loss: " + str(train_loss)[:5]                      + " ... Validation loss: " + str(val_loss)[:5])
     sys.stdout.flush()
-    
+
     losses['train'].append(train_loss)
     losses['validation'].append(val_loss)
 
@@ -207,4 +207,3 @@ dates = pd.to_datetime(rides.ix[test_data.index]['dteday'])
 dates = dates.apply(lambda d: d.strftime('%b %d'))
 ax.set_xticks(np.arange(len(dates))[12::24])
 _ = ax.set_xticklabels(dates[12::24], rotation=45)
-
