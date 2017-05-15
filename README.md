@@ -10,3 +10,4 @@
 
 - [x] Digit Recognition (using `tflearn`)
 - [x] Sentiment Analysis (using `tflearn`)
+- [ ] CNN images classification
