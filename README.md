@@ -10,4 +10,6 @@
 
 - [x] Digit Recognition (using `tflearn`)
 - [x] Sentiment Analysis (using `tflearn`)
-- [ ] CNN images classification
+- [x] CNN images classification
+
+![CNN image classification](https://github.com/ZhangShiqiu1993/deep_learning/blob/master/image_classification/softmax_prediction.png?raw=true)
