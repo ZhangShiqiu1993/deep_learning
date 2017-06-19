@@ -15,3 +15,6 @@
 ![CNN image classification](https://github.com/ZhangShiqiu1993/deep_learning/blob/master/image_classification/softmax_prediction.png?raw=true)
 
 - [x] character-wise RNN training
+- [x] Skip-gram word2vec
+
+![word2vec](https://github.com/ZhangShiqiu1993/deep_learning/blob/master/learnDL/embeddings/word2vec.png?raw=true)
