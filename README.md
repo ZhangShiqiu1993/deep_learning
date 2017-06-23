@@ -18,3 +18,5 @@
 - [x] Skip-gram word2vec
 
 ![word2vec](https://github.com/ZhangShiqiu1993/deep_learning/blob/master/learnDL/embeddings/word2vec.png?raw=true)
+
+- [x] Sentiment RNN
