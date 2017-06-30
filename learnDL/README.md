@@ -9,3 +9,5 @@
 - [x] character-wise RNN training
 - [x] Sentiment RNN
 - [x] Sequence to sequence model (`seq2seq`)
+- [x] Transfer Learning
+- [x] Q-Learning
