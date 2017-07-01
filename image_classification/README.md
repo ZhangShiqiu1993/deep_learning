@@ -4,7 +4,6 @@
 
 + Built a **Convolutional Neural Network (CNN)** by using *TensorFlow* and classified images from the *CIFAR-10* dataset
 + Implemented `normalization` on images, and `one-hot encoding` on labels
-+ Implemented convolutional and max pooling layer, flatten layer and fully connected layer
 + Created Convolutional Network Model with `convolution`, `max pool`, `dropout`, `flatten` and `fully-connect` layers
 + Got over 75% accuracy on test data
 
