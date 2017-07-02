@@ -13,3 +13,4 @@
 ![CNN image classification](https://github.com/ZhangShiqiu1993/deep_learning/blob/master/image_classification/softmax_prediction.png?raw=true)
 
 - [x] RNN Generate TV Script
+- [x] Language Translation through RNN
