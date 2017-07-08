@@ -11,4 +11,4 @@
 - [x] Sequence to sequence model (`seq2seq`)
 - [x] Transfer Learning
 - [x] Q-Learning
-- [ ] Convolutional Autoencoder
+- [x] Convolutional Autoencoder
