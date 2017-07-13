@@ -3,8 +3,12 @@
 ---
 
 + Built a **Convolutional Neural Network (CNN)** by using *TensorFlow* and classified images from the *CIFAR-10* dataset
-+ Implemented `normalization` on images, and `one-hot encoding` on labels
-+ Created Convolutional Network Model with `convolution`, `max pool`, `dropout`, `flatten` and `fully-connect` layers
++ Implemented `normalizing` on images, and `one-hot encoding` on labels
++ Applied `convolutional` layers to reduce the feature map size and increase the depth
++ Followed by `max pooling` to reduce output size and prevent overfitting
++ Applied `dropout` layer for `regularization`
++ Implemented `flatten` layer to change the tensor dimension
++ Added two `fully-connected` layers at top of the CNN model, and connected a classifier at end to get output
 + Got over 75% accuracy on test data
 
-![CNN image classification](https://github.com/ZhangShiqiu1993/deep_learning/blob/master/image_classification/softmax_prediction.png?raw=true)
+![CNN image classification](./softmax_prediction.png)
