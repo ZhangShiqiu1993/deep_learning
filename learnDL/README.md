@@ -12,3 +12,4 @@
 - [x] Transfer Learning
 - [x] Q-Learning
 - [x] Convolutional Autoencoder
+- [x] Generative Adversarial Network
