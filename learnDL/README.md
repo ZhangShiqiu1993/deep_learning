@@ -13,3 +13,5 @@
 - [x] Q-Learning
 - [x] Convolutional Autoencoder
 - [x] Generative Adversarial Network
+- [x] Batch Normalization
+- [ ] Deep Convolution GAN
