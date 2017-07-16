@@ -14,4 +14,4 @@
 - [x] Convolutional Autoencoder
 - [x] Generative Adversarial Network
 - [x] Batch Normalization
-- [ ] Deep Convolution GAN
+- [x] Deep Convolution GAN
