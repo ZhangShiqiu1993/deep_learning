@@ -14,3 +14,4 @@
 
 - [x] RNN Generate TV Script
 - [x] Language Translation through RNN
+- [x] DCGAN
